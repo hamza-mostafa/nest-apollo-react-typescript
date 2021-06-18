@@ -1,0 +1,74 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthenticatedUser {
+  id: Float
+  name: String
+  email: String
+  token: String
+}
+
+type User {
+  id: Float!
+  name: String!
+  email: String!
+  posts: [Post!]
+}
+
+type Post {
+  id: Float!
+  title: String!
+  createdAt: String!
+  createdBy: Float!
+  creator: User
+}
+
+type Query {
+  posts: [Post!]!
+  post(id: Float, title: String): Post!
+}
+
+type Mutation {
+  register(registerData: RegisterUserInputType!): AuthenticatedUser!
+  login(loginData: LoginUserInputType!): AuthenticatedUser!
+  resetPassword(resetPasswordData: ResetPasswordInputType!): AuthenticatedUser!
+  forgetPassword(forgetPasswordData: ForgetPasswordInputType!): String!
+  createPost(createPostData: CreatePostInputType!): Post!
+  updatePost(updatePostData: UpdatePostInputType!): Post!
+  deletePost(deletePostData: DeletePostInputType!): Post!
+}
+
+input RegisterUserInputType {
+  email: String!
+  name: String!
+  password: String!
+}
+
+input LoginUserInputType {
+  email: String!
+  password: String!
+}
+
+input ResetPasswordInputType {
+  email: String!
+  password: String!
+  token: String!
+}
+
+input ForgetPasswordInputType {
+  email: String!
+}
+
+input CreatePostInputType {
+  title: String!
+}
+
+input UpdatePostInputType {
+  title: String!
+  id: Float!
+}
+
+input DeletePostInputType {
+  id: Float!
+}
